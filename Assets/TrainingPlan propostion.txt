@@ -1,0 +1,12 @@
+Phase 1: Basic commands and behaviour.
+
+
+- Teach the AI to go straight.
+- Teach the AI How to turn.
+- Teach the AI How to break.
+
+
+Phase 2: Safe behaviour
+- Teach the AI to avoid valls, full lines,Other cars and humans (motor, on foot)
+- Teach the AI how priority work
+...

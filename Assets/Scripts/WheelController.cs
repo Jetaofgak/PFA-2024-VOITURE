@@ -11,6 +11,8 @@ public class WheelController : MonoBehaviour
 
     public float accel = 500f;
     public float breakingForce = 300f;
+    public float fullBreakingForce = 600;
+    public float lightBreakingForce = 200;
     public float maxTurnAngle = 30f;
     private float currentAcceleration = 0f;
     private float currentBreakForce = 0f;
@@ -21,6 +23,14 @@ public class WheelController : MonoBehaviour
         if(Input.GetKey(KeyCode.Space))
         {
             currentBreakForce = breakingForce;
+        }
+        else if(Input.GetKey(KeyCode.B))
+        {
+            currentBreakForce = fullBreakingForce;
+        }
+        else if(Input.GetKey(KeyCode.C))
+        {
+            currentBreakForce = lightBreakingForce;
         }
         else
         {

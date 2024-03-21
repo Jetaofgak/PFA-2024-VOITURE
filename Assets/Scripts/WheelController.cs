@@ -8,6 +8,7 @@ public class WheelController : MonoBehaviour
     [SerializeField] WheelCollider frontLeft;
     [SerializeField] WheelCollider backRight;
     [SerializeField] WheelCollider backLeft;
+    [SerializeField] Rigidbody rbCar;
 
     public float accel = 500f;
     public float breakingForce = 300f;
@@ -17,6 +18,10 @@ public class WheelController : MonoBehaviour
     private float currentAcceleration = 0f;
     private float currentBreakForce = 0f;
     private float currentTurnAngle = 0f;
+    private void Awake()
+    {
+        rbCar = GetComponent<Rigidbody>();
+    }
     private void FixedUpdate()
     {
         currentAcceleration = accel * Input.GetAxis("Vertical");
@@ -38,6 +43,9 @@ public class WheelController : MonoBehaviour
         }
         frontRight.motorTorque = currentAcceleration;
         frontLeft.motorTorque = currentAcceleration;
+        backLeft.motorTorque = currentAcceleration;
+        backRight.motorTorque = currentAcceleration;
+
 
         frontRight.brakeTorque = currentBreakForce;
         frontLeft.brakeTorque = currentBreakForce;
@@ -47,6 +55,8 @@ public class WheelController : MonoBehaviour
         currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
         frontLeft.steerAngle = currentTurnAngle;
         frontRight.steerAngle = currentTurnAngle;
+
+        Debug.Log("Speed: " + rbCar.velocity.magnitude*3.6f); 
     }
 
 }

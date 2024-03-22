@@ -273,7 +273,7 @@ MonoBehaviour:
   backRight: {fileID: 6627941201805516400}
   backLeft: {fileID: 8842251350919961972}
   rbCar: {fileID: 0}
-  accel: 700
+  accel: 200
   breakingForce: 100
   fullBreakingForce: 600
   lightBreakingForce: 70
@@ -352,7 +352,7 @@ MonoBehaviour:
   m_DetectableTags: []
   m_RaysPerDirection: 11
   m_MaxRayDegrees: 171.7
-  m_SphereCastRadius: 0.5
+  m_SphereCastRadius: 0.65
   m_RayLength: 20
   m_RayLayerMask:
     serializedVersion: 2
@@ -360,7 +360,7 @@ MonoBehaviour:
   m_ObservationStacks: 1
   rayHitColor: {r: 1, g: 0, b: 0, a: 1}
   rayMissColor: {r: 1, g: 1, b: 1, a: 1}
-  m_StartVerticalOffset: 0.3
+  m_StartVerticalOffset: -0
   m_EndVerticalOffset: 0
 --- !u!114 &5032701022012859086
 MonoBehaviour:

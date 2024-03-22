@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
+using Unity.MLAgents.Sensors;
 using UnityEngine;
 using UnityEngine.Timeline;
 
@@ -10,5 +11,19 @@ public class CarAgents : Agent
     public override void OnActionReceived(ActionBuffers actions)
     {
         
+    }
+
+    public override void CollectObservations(VectorSensor sensor)
+    {
+       
+    }
+    public override void OnEpisodeBegin()
+    {
+        
+    }
+
+    public void OnInfraction()
+    {
+
     }
 }

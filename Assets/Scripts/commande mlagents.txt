@@ -1,0 +1,21 @@
+OnActionReceived(ActionBuffers actions)
+Une branche avec 2 action veut dire que c'est soit l'un soit l'autre.
+
+actions.DiscreteActions[0] ou 0 represente le numero de la branche.
+actions.ContinuousActions[0]
+
+CollectObservations(VectorSensor sensor)
+{	
+	sensor.AddObeservation(data)
+
+}
+
+OnTriggerEnter(Collider collider)
+{
+	SetReward(); ici c'ets un float.
+	EndEpisode()
+
+
+}
+
+OnEpisodeBegin()

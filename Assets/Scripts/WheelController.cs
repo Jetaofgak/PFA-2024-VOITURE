@@ -18,45 +18,121 @@ public class WheelController : MonoBehaviour
     private float currentAcceleration = 0f;
     private float currentBreakForce = 0f;
     private float currentTurnAngle = 0f;
+    public bool LeftRightBool = false;
+    public float LeftOrRightDir = 0;
+    public float UpOrDownDir = 0;
+    public bool UpDownBool = false;
+    public bool Lbreak = false;
+    public bool Fbreak = false;
+    public bool breaking = false;
+   
     private void Awake()
     {
         rbCar = GetComponent<Rigidbody>();
     }
     private void FixedUpdate()
     {
-        currentAcceleration = accel * Input.GetAxis("Vertical");
-        if(Input.GetKey(KeyCode.Space))
+        Debug.Log("Brake level: "+frontLeft.brakeTorque);
+        if(LeftRightBool)
         {
-            currentBreakForce = breakingForce;
-        }
-        else if(Input.GetKey(KeyCode.B))
-        {
-            currentBreakForce = fullBreakingForce;
-        }
-        else if(Input.GetKey(KeyCode.C))
-        {
-            currentBreakForce = lightBreakingForce;
+
+            LeftOrRight(LeftOrRightDir);
+            LeftRightBool = false;
         }
         else
         {
-            currentBreakForce = 0;
+            
         }
+
+        if(UpDownBool)
+        {
+            ForwardOrBackward(UpOrDownDir);
+            UpDownBool = false;
+        }
+        else
+        {
+            
+        }
+
+        if(Lbreak)
+        {
+            Debug.Log("BL");
+            ApplyLightBreak();
+            Lbreak =false;
+        }
+        else if(breaking)
+        {
+            
+            
+            Debug.Log("BB");
+            ApplyFullBreak();
+            breaking =false;
+        }
+        else if(Fbreak)
+        {
+           
+            
+            Debug.Log("FB");
+            ApplyBaseBreak();
+            Fbreak =false;
+        }
+        else
+        {
+                BreakZero();
+        }
+        Debug.Log("Speed: " + rbCar.velocity.magnitude);
+        
+    }
+    public void BreakZero()
+    {
+        frontRight.brakeTorque = 0;
+        frontLeft.brakeTorque = 0;
+        backRight.brakeTorque = 0;
+        backLeft.brakeTorque = 0;
+    }
+    public void LeftOrRight(float dir)
+    {
+        currentTurnAngle = maxTurnAngle * dir;
+        frontLeft.steerAngle = currentTurnAngle;
+        frontRight.steerAngle = currentTurnAngle;
+        
+
+    }
+
+    public void ForwardOrBackward(float move)
+    {
+        currentAcceleration = accel * move;
+        
+        AccelAndBreak();
+    }
+    public void AccelAndBreak()
+    {
+
         frontRight.motorTorque = currentAcceleration;
         frontLeft.motorTorque = currentAcceleration;
         backLeft.motorTorque = currentAcceleration;
         backRight.motorTorque = currentAcceleration;
 
-
         frontRight.brakeTorque = currentBreakForce;
         frontLeft.brakeTorque = currentBreakForce;
         backRight.brakeTorque = currentBreakForce;
         backLeft.brakeTorque = currentBreakForce;
-
-        currentTurnAngle = maxTurnAngle * Input.GetAxis("Horizontal");
-        frontLeft.steerAngle = currentTurnAngle;
-        frontRight.steerAngle = currentTurnAngle;
-
-        Debug.Log("Speed: " + rbCar.velocity.magnitude*3.6f); 
+    }
+    public void ApplyLightBreak()
+    {
+        currentBreakForce = lightBreakingForce;
+        AccelAndBreak();
     }
 
+    public void ApplyBaseBreak()
+    {
+        currentBreakForce = breakingForce;
+        AccelAndBreak();
+    }
+
+    public void ApplyFullBreak()
+    {
+        currentBreakForce = fullBreakingForce;
+        AccelAndBreak();
+    }
 }

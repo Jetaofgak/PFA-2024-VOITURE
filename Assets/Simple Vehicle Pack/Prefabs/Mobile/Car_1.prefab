@@ -279,7 +279,14 @@ MonoBehaviour:
   breakingForce: 100
   fullBreakingForce: 600
   lightBreakingForce: 70
-  maxTurnAngle: 25
+  maxTurnAngle: 30
+  LeftRightBool: 0
+  LeftOrRightDir: 0
+  UpOrDownDir: 0
+  UpDownBool: 0
+  Lbreak: 0
+  Fbreak: 0
+  breaking: 0
 --- !u!114 &2536215347493304888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,7 +347,6 @@ MonoBehaviour:
   MaxStep: 0
   trchecks: {fileID: 0}
   checkTransform: {fileID: 0}
-  controller: {fileID: 0}
 --- !u!114 &8758732943901908555
 MonoBehaviour:
   m_ObjectHideFlags: 0

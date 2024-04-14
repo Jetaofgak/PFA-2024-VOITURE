@@ -6,7 +6,7 @@ using Unity.MLAgents.Sensors;
 using UnityEngine;
 using UnityEngine.Timeline;
 
-public class CarAgents : Agent
+public class CarAgents : PrometeoCarController
 {
     [SerializeField] TrackCheckpoints trchecks;
     [SerializeField] Transform checkTransform;
@@ -95,7 +95,7 @@ public class CarAgents : Agent
     }
     public override void OnEpisodeBegin()
     {
-        transform.localPosition = new Vector3(-5.27082253f, 9.92000008f, -27.6100006f);
+        //transform.localPosition = new Vector3(-5.27082253f, 9.92000008f, -27.6100006f);
         transform.localRotation = Quaternion.identity;
 
 

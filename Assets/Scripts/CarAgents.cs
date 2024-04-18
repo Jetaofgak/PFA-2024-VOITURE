@@ -8,35 +8,29 @@ using UnityEngine.Timeline;
 
 public class CarAgents : PrometeoCarController
 {
-    [SerializeField] TrackCheckpoints trchecks;
+    
     [SerializeField] Transform checkTransform;
-    private WheelController controller;
+    
     private void Start()
     {
-        controller = GetComponent<WheelController>();
+        
     }
     public override void OnActionReceived(ActionBuffers actions)
     { 
         float goLeftOrRight = actions.ContinuousActions[0];  
         if(goLeftOrRight != 0)
         {
-            controller.LeftRightBool = true;
-            controller.LeftOrRightDir = goLeftOrRight;
+           
         }
         switch (actions.DiscreteActions[0])
         {
-            case 0 : controller.Lbreak = true; break;
-            case 1 : controller.breaking = true; break;
-            case 2 : controller.Fbreak = true; break;
-            case 3 : controller.Fbreak = false; controller.breaking = false; controller.Lbreak = false; break;
+           
 
         }
 
         switch (actions.DiscreteActions[1])
         {
-            case 0: controller.UpDownBool = true;controller.UpOrDownDir = 1;  break;
-            case 1: controller.UpDownBool = true;controller.UpOrDownDir = -1;  break;
-            case 2: controller.UpDownBool = false;  break;
+            
         }
          
         

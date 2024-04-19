@@ -137,7 +137,7 @@ public class PrometeoCarController : PrometeoTouchInput
       /*
       IMPORTANT: The following variables should not be modified manually since their values are automatically given via script.
       */
-      Rigidbody carRigidbody; // Stores the car's rigidbody.
+      public Rigidbody carRigidbody; // Stores the car's rigidbody.
       float steeringAxis; // Used to know whether the steering wheel has reached the maximum value. It goes from -1 to 1.
       float throttleAxis; // Used to know whether the throttle has reached the maximum value. It goes from -1 to 1.
       float driftingAxis;
@@ -165,7 +165,7 @@ public class PrometeoCarController : PrometeoTouchInput
       //In this part, we set the 'carRigidbody' value with the Rigidbody attached to this
       //gameObject. Also, we define the center of mass of the car with the Vector3 given
       //in the inspector.
-      carRigidbody = gameObject.GetComponent<Rigidbody>();
+     
       carRigidbody.centerOfMass = bodyMassCenter;
 
       //Initial setup to calculate the drift value of the car. This part could look a bit

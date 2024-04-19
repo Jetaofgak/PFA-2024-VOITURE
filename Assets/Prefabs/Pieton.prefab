@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7605988076236045796}
   - component: {fileID: 6624214190181848582}
   - component: {fileID: 2252252661231344909}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Pieton
   m_TagString: Untagged
   m_Icon: {fileID: 0}

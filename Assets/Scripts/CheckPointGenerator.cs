@@ -69,7 +69,7 @@ public class CheckPointGenerator : MonoBehaviour
         {
             
             agent.isStopped = true;
-            Destroy(gameObject, 1f);
+            Destroy(gameObject, 0.2f);
         }
     }
 }

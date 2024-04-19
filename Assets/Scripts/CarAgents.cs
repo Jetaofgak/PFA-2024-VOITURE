@@ -8,12 +8,18 @@ using UnityEngine.Timeline;
 
 public class CarAgents : PrometeoCarController
 {
-    
+    public RayPerceptionSensorComponent3D raySensorCheckpoints;
+    public RayPerceptionSensorComponent3D raySensorObstacle;
     [SerializeField] Transform checkTransform;
-    
+    public override void Initialize()
+    {
+
+
+    }
     private void Start()
     {
-        
+       
+
     }
     public override void OnActionReceived(ActionBuffers actions)
     { 
@@ -38,46 +44,10 @@ public class CarAgents : PrometeoCarController
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         
-        int actionMove = 2;
-
-        int actionbreak = 3;
-        ActionSegment<float> continuousActions = actionsOut.ContinuousActions;
-        ActionSegment<int> linearActions = actionsOut.DiscreteActions;
-        continuousActions[0] = Input.GetAxis("Horizontal");
-        if(Input.GetAxisRaw("Vertical")== 1)
-        {
-
-            actionMove = 0;
-        }
-        else if(Input.GetAxisRaw("Vertical") == -1)
-        {
-            actionMove = 1;
-        }
-        else
-        {
-            actionMove = 2;
-        }
-
-        if(Input.GetKey(KeyCode.Space))
-        {
-            actionbreak = 0;
-        }
-        else if (Input.GetKey(KeyCode.B))
-        {
-            actionbreak = 2;
-        }
-        else if(Input.GetKey(KeyCode.C))
-        {
-            actionbreak = 1;
-        }
-        else
-        {
-            actionbreak = 3;
-        }
+       
 
 
-        linearActions[0] = actionbreak;
-        linearActions[1] = actionMove;
+       
         
         
     }

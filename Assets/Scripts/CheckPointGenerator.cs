@@ -1,75 +1,60 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-
-public class CheckPointGenerator : MonoBehaviour
+public class CheckpointGenerator : MonoBehaviour
 {
-    public NavMeshAgent agent;
-    bool generate = false;
-    public GameObject checkpoint;
-    public int stopNow;
-    int count;
-    public GameObject[] goalies = { };
-    int id;
-    int checkpointCounter = 0;
-    // Update is called once per frame
+    public GameObject checkpointPrefab; // Prefab of the checkpoint
+    private int spawnerID;
+    private NavMeshAgent agent;
+    private float timer = 0f; // Timer to keep track of time
+    private float checkpointInterval = 0.5f; // Interval between checkpoint instantiations
+    
     private void Awake()
     {
-        for (int i = 0; i < goalies.Length; i++)
-        {
-            string bPointName = "BPoint";
-            if (i > 0)
-            {
-                bPointName += " (" + i + ")";
-            }
-            goalies[i] = GameObject.Find(bPointName);
-            if (goalies[i] == null)
-            {
-                Debug.LogError("BPoint " + bPointName + " not found!");
-                // Handle error if BPoint not found
-            }
-        }
-    }
-    private void Start()
-    {
-
-        id = CarSpawn.id;
-        Debug.Log("MON ID ON SPAWN: "+ id);
-        id = CarSpawn.id2;
-        Debug.Log("JE go vers: " + id);
-        
-    }
-    private void FixedUpdate()
-    {
-        Debug.Log("GO VERS PTN DE ID: "+id);
-       CheckpointGeneration(goalies[id]);
-        
+        agent = GetComponent<NavMeshAgent>();
+        Verification();
     }
 
-    public void CheckpointGeneration(GameObject goal)
+    public void SetSpawnerID(int id)
     {
-        
-        agent.SetDestination(goal.transform.position);
-        count++;
-        if (count >= 20)
-        {
-            Vector3 pos = transform.position;
-            GameObject checkObject = Instantiate(checkpoint, pos, transform.rotation);
-            checkObject.name = this.name+ " " + checkpointCounter;
-            checkpointCounter++;
-            count = 0;
+        spawnerID = id;
+        MoveToNextSpawn(CarSpawner.vectorSpawns[spawnerID]);
+    }
 
-        }
-       
-        if(Vector3.Distance(goal.transform.position, transform.position) < stopNow)
+    public void MoveToNextSpawn(Vector3 spawnPosition)
+    {
+        agent.SetDestination(spawnPosition);
+    }
+
+    private void Update()
+    {
+        // Check if the agent has reached its destination
+        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
-            
-            agent.isStopped = true;
-            Destroy(gameObject, 0.2f);
+            // Destroy the generator GameObject
+            Destroy(gameObject);
         }
+
+        // Increment timer
+        timer += Time.deltaTime;
+
+        // Check if it's time to instantiate a checkpoint
+        if (timer >= checkpointInterval)
+        {
+            // Instantiate a checkpoint
+            Instantiate(checkpointPrefab, transform.position, this.transform.rotation);
+            // Reset the timer
+            timer = 0.1f;
+        }
+    }
+
+    void Verification()
+    {
+        Debug.Log("VERIFICATION");
+        foreach (Vector3 cars in CarSpawner.vectorSpawns)
+            Debug.Log(cars);
+
+
     }
 }

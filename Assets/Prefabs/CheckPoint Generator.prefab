@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 6727529421680928623}
   - component: {fileID: 2421524793728952823}
   - component: {fileID: 7135751980973537038}
-  - component: {fileID: 6414493849192684205}
+  - component: {fileID: 6910032537144872499}
   m_Layer: 0
   m_Name: CheckPoint Generator
   m_TagString: Untagged
@@ -237,7 +237,7 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &6414493849192684205
+--- !u!114 &6910032537144872499
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -246,17 +246,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6664421221254179921}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2a71b77ecb0f584c9d32a922f72e177, type: 3}
+  m_Script: {fileID: 11500000, guid: bc71e616a2733a949b5f84d19ba7a720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 7135751980973537038}
-  checkpoint: {fileID: 7152466121333571995, guid: 9363eadd9f79a7146884e81537cbb83a, type: 3}
-  stopNow: 2
-  goalies:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  checkpointPrefab: {fileID: 7152466121333571995, guid: 9363eadd9f79a7146884e81537cbb83a, type: 3}

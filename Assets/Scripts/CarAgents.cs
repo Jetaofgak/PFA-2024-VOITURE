@@ -56,6 +56,11 @@ public class CarAgents : PrometeoCarController
         sensor.AddObservation(transform.localPosition);
         sensor.AddObservation(transform.localRotation.y);
         sensor.AddObservation(checkTransform.position);
+       
+
+
+
+       
     }
     public override void OnEpisodeBegin()
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.MLAgents;
 using UnityEngine;
 
-public class PrometeoTouchInput : Agent
+public class PrometeoTouchInput : MonoBehaviour
 {
 
     public bool changeScaleOnPressed = false;
